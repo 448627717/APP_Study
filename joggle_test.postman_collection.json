@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "c0431d0c-a721-42ea-b805-306712db8357",
+		"name": "joggle_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "loggin Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4936134-6bc1-476e-a760-a844ff9c50a4",
+						"exec": [
+							"//判断响应字段中是否含有想要返回的头部字段\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							" //判断响应实体中是否包含预期的字符串\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"  pm.expect(pm.response.text()).to.not.include(\"Welcome lisi\");\r",
+							" });\r",
+							"\r",
+							" //判断响应时间是否小于预期结果\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "lisi",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password_1}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:5000/login"
+			},
+			"response": []
+		},
+		{
+			"name": "loggin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "725d574c-2e9c-4ab8-9e68-00f65181dcd3",
+						"exec": [
+							"//判断响应字段中是否含有想要返回的头部字段\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							" //判断响应实体中是否包含预期的字符串\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"  pm.expect(pm.response.text()).to.not.include(\"Welcome zhangsan\");\r",
+							" });\r",
+							"\r",
+							" //判断响应时间是否小于预期结果\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{usearname_1}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:5000/login"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
